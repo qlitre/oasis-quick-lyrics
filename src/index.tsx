@@ -136,21 +136,22 @@ app.get('/', (c) => {
   
   return c.render(
     <div>
-      <h1>🎸 OASIS LIVE '25 - CARDIFF 🎸</h1>
-      
+      <h1>🎸 OASIS LIVE '25 🎸</h1>
+
+      <div class="description">
+        歌詞リンクは<a href="https://oasisinet.com/" target="_blank" rel="noopener noreferrer">Oasisinet</a>より
+      </div>
+
       <div class="song-grid">
         {mainSongs.map((song, index) => (
           <div key={index} class="song-item">
-            <div class="song-number">{index + 1}.</div>
-            <div class="song-title">{song.songName}</div>
-            <div class="song-album">{song.albumName}</div>
-            <a 
-              href={`https://oasisinet.com/lyrics/${song.lyricsUrl}/`} 
-              target="_blank" 
+            <a
+              href={`https://oasisinet.com/lyrics/${song.lyricsUrl}/`}
+              target="_blank"
               rel="noopener noreferrer"
-              class="lyrics-link"
             >
-              歌詞を見る
+              <span class="song-number">{index + 1}.</span>
+              <span class="song-title">{song.songName}</span>
             </a>
           </div>
         ))}
@@ -161,42 +162,18 @@ app.get('/', (c) => {
         <div class="song-grid">
           {encoreSongs.map((song, index) => (
             <div key={index} class="song-item">
-              <div class="song-number">E{index + 1}.</div>
-              <div class="song-title">{song.songName}</div>
-              <div class="song-album">{song.albumName}</div>
-              <a 
-                href={`https://oasisinet.com/lyrics/${song.lyricsUrl}/`} 
-                target="_blank" 
+              <a
+                href={`https://oasisinet.com/lyrics/${song.lyricsUrl}/`}
+                target="_blank"
                 rel="noopener noreferrer"
-                class="lyrics-link"
               >
-                歌詞を見る
+                <span class="song-number">E{index + 1}.</span>
+                <span class="song-title">{song.songName}</span>
               </a>
             </div>
           ))}
         </div>
       </div>
-    </div>
-  )
-})
-
-app.get('/song/:slug', (c) => {
-  const slug = c.req.param('slug')
-  const song = songs.find(s => s.lyricsUrl === slug)
-  
-  if (!song) {
-    return c.render(<h1>Song not found</h1>)
-  }
-  
-  return c.render(
-    <div>
-      <h1>{song.songName}</h1>
-      <p><strong>Album:</strong> {song.albumName}</p>
-      <a href={`https://oasisinet.com/lyrics/${song.lyricsUrl}/`} target="_blank" rel="noopener noreferrer">
-        View Lyrics on Oasisinet →
-      </a>
-      <br />
-      <a href="/">← Back to Setlist</a>
     </div>
   )
 })
