@@ -147,8 +147,6 @@ app.get('/', (c) => {
           <div key={index} class="song-item">
             <a
               href={`https://oasisinet.com/lyrics/${song.lyricsUrl}/`}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <span class="song-number">{index + 1}.</span>
               <span class="song-title">{song.songName}</span>
@@ -164,8 +162,6 @@ app.get('/', (c) => {
             <div key={index} class="song-item">
               <a
                 href={`https://oasisinet.com/lyrics/${song.lyricsUrl}/`}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <span class="song-number">E{index + 1}.</span>
                 <span class="song-title">{song.songName}</span>
